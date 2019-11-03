@@ -1,0 +1,47 @@
+package HomeWork4;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Task2 {
+
+	public static void main(String[] args) throws IOException  {
+		
+		File firstFile = new File("firstFile.txt");	
+		File secondFile = new File("secondFile.txt");
+		File thirdFile = new File("newFile.txt");
+		
+		WorkWithFiles wwf = new WorkWithFiles();
+		
+	char textFromFirstFile[] = new char[(int)firstFile.length()];
+	char textFromSecondFile[] = new char[(int)secondFile.length()];
+	
+		textFromFirstFile = wwf.getTextFromFile(firstFile);
+		textFromSecondFile = wwf.getTextFromFile(secondFile);
+
+		System.out.println("Дані з файлу: " + firstFile.getName());
+		for (char c : textFromFirstFile) {
+			System.out.print(c);
+		}
+		
+		System.out.println("\nДані з файлу: " + secondFile.getName());
+		for (char c : textFromSecondFile) {
+			System.out.print(c);
+		}
+		
+		
+		thirdFile=wwf.writeDatatoFileFrom2Files(textFromFirstFile, textFromSecondFile,thirdFile);
+		char textFromThirdFile[] = new char[(int) thirdFile.length()];
+		textFromThirdFile = wwf.getTextFromFile(thirdFile);
+		
+		System.out.println("\nДані з новоствореного файлу : " + thirdFile.getName());
+		for (char c : textFromThirdFile) {
+			System.out.print(c);
+		}	
+		
+		
+
+}
+}
